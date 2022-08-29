@@ -229,7 +229,7 @@ def loadfeatset(filename):
 ##用相关系数前20基因的表达量预测激酶活性+线性回归
 expmat=[]
 import csv
-with open('C:/学习/港中深博一/激酶预测课题/kinase_dataset/BC.csv','r') as f:
+with open('C:/学习/激酶预测课题/kinase_dataset/BC.csv','r') as f:
     reader=csv.reader(f)
     for row in reader:
         expmat.append(row)
