@@ -37,14 +37,14 @@ def loadfeatset(filename,inter):
         dataMat.append(lineArr)
     return dataMat
 
-kinase=loadfeatset("C:/学习/港中深博一/激酶预测课题/kinase_dataset/LSCC.csv",",")
+kinase=loadfeatset("C:/学习/激酶预测课题/kinase_dataset/LSCC.csv",",")
 kinase=np.asarray(kinase)
 kinase=np.delete(kinase,0,axis=0)
 kinase=np.delete(kinase,0,axis=1)  ##repeat twice
 print(kinase.shape[1])
 #将输入文件转换为L1000格式
 L1000=[]
-f1=open("C:/学习/港中深博一/激酶预测课题/L1000.txt","r")
+f1=open("C:/学习/激酶预测课题/L1000.txt","r")
 line=f1.readlines()
 for i in line:
     L1000.append(eval(i))
@@ -84,9 +84,9 @@ for i in range(len(kinase)):
     print(grid_model.best_score_)
 
 R2=pd.DataFrame(R2)
-R2.to_excel("C:/学习/港中深博一/激酶预测课题/result/R2_LSCC.xlsx")  
+R2.to_excel("C:/学习/激酶预测课题/result/R2_LSCC.xlsx")  
 best_params=pd.DataFrame(best_params)
-best_params.to_excel("C:/学习/港中深博一/激酶预测课题/result/params_LSCC.xlsx")
+best_params.to_excel("C:/学习/激酶预测课题/result/params_LSCC.xlsx")
 
 ##激酶底物作为输入特征
 
