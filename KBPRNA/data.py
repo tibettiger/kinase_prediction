@@ -1,3 +1,4 @@
+import os
 import scipy
 import pandas as pd
 from sklearn.decomposition import PCA 
@@ -21,24 +22,25 @@ def loadfeatset(filename):
         dataMat.append(lineArr)
     return dataMat
 
-def preprocess_data_all(dataMat):
-    data = loadfeatset("BC_mRNA.csv")
+def preprocess_data_all(cancer_type):
+    data = loadfeatset("%d_mRNA.csv" % cancer_type)
     data = pd.Dataframe(data)
     newdatamat = PCA(n_components=20).fit_transform(data)
     return newdatamat
 
-def preprocess_data_L1000(dataMat):
+def preprocess_data_L1000(cancer_type):
     """Helper function to transform a original bulk RNA-seq dataset to a dataMat containing 
     information with LINCS-L1000 genes"""
-    L1000 = pd.read_table("LINCS-L1000.txt", sep = "\t")
-    data = loadfeatset("BC_mRNA.csv")
+    L1000 = pd.read_table("L1000.txt", sep = "\t")
+    data = loadfeatset("%d_mRNA.csv" % cancer_type)
     data = pd.Dataframe(data)
     newmat = []
     for i in len(L1000):
         for j in len(data):
             if data.iloc[j,1] == L1000.iloc[i,1]:
                 newmat.append(data.iloc[j,:])
-    newdatamat=PCA(n_components=20).fit_transform(dataMat)
+    newdatamat=PCA(n_components=20).fit_transform(newmat)
     return newdatamat   
+
 
 
