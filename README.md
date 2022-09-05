@@ -6,10 +6,6 @@ KBPRNA is a novel machine learning method based on bulk RNA-seq data to predict 
 KBPRNA currently supports python >= 3.8, and can be installed from PyPI
 pip install KBPRNA
 
-Alternatively, one can install KBPRNA's master branch directly from github: 
-
-python -m pip install git+https://github.com/tibettiger/KBPRNA.git
-
 ## usage
 
 You can follow our model's usage method through tutorial.ipynb
