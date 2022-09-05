@@ -4,6 +4,7 @@ KBPRNA is a novel machine learning method based on bulk RNA-seq data to predict 
 
 ## installation
 KBPRNA currently supports python >= 3.8, and can be installed from PyPI
+
 pip install KBPRNA
 
 ## usage
