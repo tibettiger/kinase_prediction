@@ -11,7 +11,7 @@ import numpy as np
 
 def preprocess_data_all(cancer_type):
     dataMat = pd.read_csv("RNA/%s_RNA.csv" % cancer_type, index_col = 0)
-    newdatamat = PCA(n_components=20).fit_transform(dataMat)
+    newdatamat = PCA(n_components=20).fit_transform(dataMat.T)
     return newdatamat
 
 def preprocess_data_L1000(cancer_type):
@@ -22,8 +22,9 @@ def preprocess_data_L1000(cancer_type):
     newdata = pd.DataFrame()
     for i in range(L1000.shape[0]):
         if L1000.iloc[i].values in dataMat.index.values:
-            newdata = newdata.append(pd.DataFrame(dataMat.loc[L1000.iloc[i],:]))
-    newdatamat=PCA(n_components=20).fit_transform(newdata)
+            newdata = pd.concat([newdata, dataMat.loc[L1000.iloc[i], :]], axis = 0)
+            #newdata = newdata.append( dataMat.loc[L1000.iloc[i],:])
+    newdatamat=PCA(n_components=20).fit_transform(newdata.T)
     return newdatamat   
 
 
